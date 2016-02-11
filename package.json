@@ -11,9 +11,16 @@
     "nodejs",
     "workshop"
   ],
-  "author": "",
+  "author": "Hanna Nicol <hanna.nicol@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "cli-table": "^0.3.1",
     "mysql": "^2.9.0"
   }
 }
+
+
+  $ npm install cli-table --save
+  npm WARN package.json node-mysql-workshop@0.0.1 No repository field.
+  cli-table@0.3.1 node_modules/cli-table
+  └── colors@1.0.3
