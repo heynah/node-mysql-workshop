@@ -1,0 +1,99 @@
+mysql> use addressbook;
+Database changed
+mysql> show tables from addressbook;
++-----------------------+
+| Tables_in_addressbook |
++-----------------------+
+| Account               |
+| Address               |
+| AddressBook           |
+| Email                 |
+| Entry                 |
+| Phone                 |
+| names                 |
++-----------------------+
+7 rows in set (0.00 sec)
+
+mysql> describe Account;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| id        | int(11)      | NO   | PRI | NULL    | auto_increment |
+| email     | varchar(100) | YES  |     | NULL    |                |
+| password  | varchar(100) | YES  |     | NULL    |                |
+| createdAt | datetime     | YES  |     | NULL    |                |
+| updatedAt | datetime     | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> describe Address;
++---------+-----------------------------+------+-----+---------+----------------+
+| Field   | Type                        | Null | Key | Default | Extra          |
++---------+-----------------------------+------+-----+---------+----------------+
+| id      | int(11)                     | NO   | PRI | NULL    | auto_increment |
+| entryId | int(11)                     | YES  |     | NULL    |                |
+| type    | enum('home','work','other') | YES  |     | NULL    |                |
+| line1   | varchar(100)                | YES  |     | NULL    |                |
+| line2   | varchar(100)                | YES  |     | NULL    |                |
+| city    | varchar(100)                | YES  |     | NULL    |                |
+| state   | varchar(100)                | YES  |     | NULL    |                |
+| zip     | varchar(100)                | YES  |     | NULL    |                |
+| country | varchar(100)                | YES  |     | NULL    |                |
++---------+-----------------------------+------+-----+---------+----------------+
+9 rows in set (0.00 sec)
+
+mysql> describe AddressBook;
++-----------+-------------+------+-----+---------+----------------+
+| Field     | Type        | Null | Key | Default | Extra          |
++-----------+-------------+------+-----+---------+----------------+
+| id        | int(11)     | NO   | PRI | NULL    | auto_increment |
+| accountId | int(11)     | YES  |     | NULL    |                |
+| name      | varchar(50) | YES  |     | NULL    |                |
++-----------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> describe Email;
++---------+-----------------------------+------+-----+---------+----------------+
+| Field   | Type                        | Null | Key | Default | Extra          |
++---------+-----------------------------+------+-----+---------+----------------+
+| id      | int(11)                     | NO   | PRI | NULL    | auto_increment |
+| entryId | int(11)                     | YES  |     | NULL    |                |
+| type    | enum('work','home','other') | YES  |     | NULL    |                |
+| address | varchar(100)                | YES  |     | NULL    |                |
++---------+-----------------------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> describe Entry;
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| id            | int(11)     | NO   | PRI | NULL    | auto_increment |
+| addressbookId | int(11)     | YES  |     | NULL    |                |
+| firstName     | varchar(50) | YES  |     | NULL    |                |
+| lastName      | varchar(50) | YES  |     | NULL    |                |
+| birthday      | date        | YES  |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> describe Phones;
+ERROR 1146 (42S02): Table 'addressbook.Phones' doesn't exist
+mysql> describe Phone;
++-------------+---------------------------------+------+-----+---------+----------------+
+| Field       | Type                            | Null | Key | Default | Extra          |
++-------------+---------------------------------+------+-----+---------+----------------+
+| id          | int(11)                         | NO   | PRI | NULL    | auto_increment |
+| entryId     | int(11)                         | YES  |     | NULL    |                |
+| type        | enum('work','home','other')     | YES  |     | NULL    |                |
+| subtype     | enum('landline','mobile','fax') | YES  |     | NULL    |                |
+| phoneNumber | varchar(30)                     | YES  |     | NULL    |                |
++-------------+---------------------------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> describe names;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| firstName | varchar(100) | YES  |     | NULL    |       |
+| lastName  | varchar(100) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
